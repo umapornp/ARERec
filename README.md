@@ -1,7 +1,14 @@
 # ARERec
 
-This repository contains the TensorFlow implementation for the paper: [ARERec: Attentive Local Interaction Model for Sequential Recommendation
+This repository contains the TensorFlow implementation for the IEEE Access paper: [ARERec: Attentive Local Interaction Model for Sequential Recommendation
 ](https://ieeexplore.ieee.org/document/9737503)
+> Padungkiatwattana, U., Sae-Diae, T., Maneeroj, S., & Takasu, A. (2022). ARERec: Attentive Local Interaction Model for Sequential Recommendation. IEEE Access, 10, 31340-31358.
+
+## Introduction
+<p align="left">
+<img src="ARERec.png", width="700">
+</p>
+ARERec is a novel attentive local-interaction model for sequential recommendation. ARERec applies a region-embedding technique to both user and item historical sequences, enabling it to model both user and item behavior during the interaction period that can reflect more-specific reasons behind the various interactions. Furthermore, ARERec adopts a neighbor-based CF concept by applying a multi-head attention mechanism to generate dynamic similarity levels between users and their neighbors, thereby personalizing each neighbor based on the characteristics of the user.
 
 ## Dependencies
 The script has been tested under the following dependencies:
@@ -12,7 +19,7 @@ The script has been tested under the following dependencies:
 * `Sklearn==0.23.0`
 
 ## Usage
-### Prepare the dataset
+### :pencil2: Prepare the dataset
 You can prepare the dataset by using the following command. This command creates the historical sequence, cleans the data, and splits the data into a training and testing set.
 ```bash
 python dataset.py \
@@ -28,7 +35,7 @@ After preparing the dataset, the following ID files are created in the directory
 * `{data_version}_test.id` contains the test data.
 * `{data_version}_item_user_sequence.id` contains the item historical sequences.
 
-### See the dataset statistics
+### :chart_with_upwards_trend: See the dataset statistics
 You can see the dataset statistics by using the following command. This command displays the number of records, users, and items, as well as historical sequence details.
 ```bash
 python dataset.py \
@@ -36,7 +43,7 @@ python dataset.py \
     --show_details 'ml-1m_8020_minseq20_bs128_dper1.0'
 ```
 
-### Run and evaluate the model
+### :running: Run and evaluate the model
 You can run and evaluate the model by using the following command.
 ```bash
 python run.py \
@@ -54,7 +61,7 @@ python run.py \
 ```
 After running the model, training weights and evaluation results are saved in the directory `Model/{dataset}/{model_name}/`.
 
-### Load and resume the model
+### :repeat: Load and resume the model
 You can resume the previous saved model by using the following command. This command loads the saved weights (the weight `cp-0002.ckpt` of the model name `ml-1m_8020_bs128_lr0.0001_emb64_reg7_ms327_opadam_h2`) and trains the model from the previous checkpoint (start training at epoch 3 and finish at epoch 4).
 ```bash
 python run.py \
